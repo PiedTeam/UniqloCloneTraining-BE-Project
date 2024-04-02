@@ -6,5 +6,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Project twitter này đang chạy trên post ${port}`)
+  console.log(`Project uniqlo này đang chạy trên post ${port}`)
 })
