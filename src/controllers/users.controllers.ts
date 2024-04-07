@@ -4,12 +4,9 @@ import usersService from '../services/users.services'
 //1 req của client gữi lên server sẽ có body(chứa các thứ cần gửi)
 export const loginController = (req: Request, res: Response) => {
   const { email, password } = req.body
-  if (email === 'hekhang' && password === '123456') {
+  if (email === 'khangbeo0410@gmail.com' && password === 'Khangbeo4101010@') {
     return res.json({
-      data: [
-        { id: 1, name: 'Minh', job: 'Student' },
-        { id: 2, name: 'Khang', job: 'that Nghiep' }
-      ]
+      message: 'Login success'
     })
   } else {
     return res.status(400).json({

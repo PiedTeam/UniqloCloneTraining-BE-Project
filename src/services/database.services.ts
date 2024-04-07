@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import User from '../models/schemas/User.schema'
 
 dotenv.config()
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@project-uniqlo.k5okbtl.mongodb.net/?retryWrites=true&w=majority&appName=Project-Uniqlo`
+const uri = `mongodb+srv://uniqlo-sa:i1gmT1OXOFPVRbRy@cluster1.f18lfkh.mongodb.net/`
 
 class DatabaseService {
   private client: MongoClient
