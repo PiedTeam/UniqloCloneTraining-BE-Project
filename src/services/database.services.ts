@@ -1,6 +1,7 @@
 import { Collection, Db, MongoClient } from 'mongodb'
 import dotenv from 'dotenv'
 import User from '../models/schemas/User.schema'
+import Product from '~/models/schemas/Products.schema'
 
 dotenv.config()
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@project-uniqlo.k5okbtl.mongodb.net/?retryWrites=true&w=majority&appName=Project-Uniqlo`
@@ -25,6 +26,12 @@ class DatabaseService {
   get users(): Collection<User> {
     return this.db.collection(process.env.DB_USERS_COLLECTION as string)
     //vào db lấy ra collection users, và vì chuỗi truyền vào có thể là undefined nên mình phải rằng buộc nó là string 'thử xóa as string để thấy lỗi'
+  }
+  get products(): Collection<Product> {
+    return this.db.collection(process.env.DB_USERS_COLLECTION as string)
+  }
+  get logs(): Collection<Product> {
+    return this.db.collection(process.env.DB_USERS_COLLECTION as string)
   }
 }
 
