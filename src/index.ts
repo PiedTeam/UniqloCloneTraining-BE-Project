@@ -1,6 +1,7 @@
 import express from 'express'
 import userRouter from './routes/users.routers'
 import databaseServices from './services/database.services'
+import productRouter from './routes/product.routers'
 ////////////////////////
 const app = express()
 const port = 3000
@@ -10,6 +11,7 @@ databaseServices.connect()
 
 app.use(express.json())
 app.use('/users', userRouter)
+app.use('/products', productRouter)
 export default app
 
 app.get('/', (req, res) => {

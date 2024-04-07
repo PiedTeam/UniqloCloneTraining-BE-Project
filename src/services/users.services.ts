@@ -1,5 +1,6 @@
 import User from '~/models/schemas/User.schema'
 import databaseService from './database.services'
+import databaseServices from './database.services'
 
 class UsersService {
   async register(payload: { email: string; password: string }) {

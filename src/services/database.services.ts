@@ -4,13 +4,13 @@ import User from '../models/schemas/User.schema'
 import Product from '~/models/schemas/Products.schema'
 
 dotenv.config()
-const uri = `mongodb+srv://uniqlo-sa:i1gmT1OXOFPVRbRy@cluster1.f18lfkh.mongodb.net/`
+const connectionString = `mongodb+srv://uniqlo-sa:i1gmT1OXOFPVRbRy@cluster1.f18lfkh.mongodb.net/`
 
 class DatabaseService {
   private client: MongoClient
   private db: Db //tạo thành thuộc tình db
   constructor() {
-    this.client = new MongoClient(uri)
+    this.client = new MongoClient(connectionString)
     // nạp giá trị cho thuộc tình db thông qua constructor
     this.db = this.client.db(process.env.DB_NAME)
   }
@@ -28,10 +28,10 @@ class DatabaseService {
     //vào db lấy ra collection users, và vì chuỗi truyền vào có thể là undefined nên mình phải rằng buộc nó là string 'thử xóa as string để thấy lỗi'
   }
   get products(): Collection<Product> {
-    return this.db.collection(process.env.DB_USERS_COLLECTION as string)
+    return this.db.collection(process.env.DB_PRODUCTS_COLLECTION as string)
   }
   get logs(): Collection<Product> {
-    return this.db.collection(process.env.DB_USERS_COLLECTION as string)
+    return this.db.collection(process.env.DB_LOGS_COLLECTION as string)
   }
 }
 
