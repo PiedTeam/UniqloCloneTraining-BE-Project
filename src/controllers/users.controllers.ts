@@ -1,5 +1,5 @@
-import { Request, Response } from 'express'
 import usersService from '../services/users.services'
+import { Request, Response } from 'express'
 
 //1 req của client gữi lên server sẽ có body(chứa các thứ cần gửi)
 export const loginController = (req: Request, res: Response) => {

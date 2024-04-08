@@ -7,7 +7,7 @@ class UsersService {
     const { email, password } = payload
     const result = await databaseService.users.insertOne(
       new User({
-        email, //tạo user chỉ cần email, password
+        email,
         password
       })
     )
