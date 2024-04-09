@@ -11,7 +11,7 @@ interface LogType {
   action_at: Date
 }
 
-export default class Logs {
+export default class Log {
   _id?: ObjectId
   document: LogDocument
   enity: ObjectId

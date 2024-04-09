@@ -5,7 +5,9 @@ export enum ProductStatus {
 
 export enum ProductGender {
   Male,
-  Female
+  Female,
+  Children,
+  Baby
 }
 
 export enum ProductSize {
