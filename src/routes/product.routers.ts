@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import databaseServices from '~/services/database.services'
+import { productController } from '~/controllers/products.controller'
 
 const productRouter = Router()
 
@@ -9,4 +10,5 @@ productRouter.get('/', async (req, res) => {
   res.send(product?.cover_image)
 })
 
+productRouter.get('/getproduct', productController)
 export default productRouter
