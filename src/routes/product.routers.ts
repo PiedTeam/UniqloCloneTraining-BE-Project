@@ -10,5 +10,5 @@ productRouter.get('/', async (req, res) => {
   res.send(product?.cover_image)
 })
 
-productRouter.get('/getproduct', productController)
+productRouter.get('/:id', productController)
 export default productRouter
