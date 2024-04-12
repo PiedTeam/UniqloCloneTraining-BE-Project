@@ -7,7 +7,7 @@ class ProductSevrice {
     return product
   }
   async deleteProductById(id: string) {
-    const product = await databaseServices.products.findOneAndDelete({ _id: new ObjectId(id) })
+    const product = await databaseServices.products.find({ _id: new ObjectId(id) })
   }
 }
 
