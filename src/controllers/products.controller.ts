@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import productSevrice from '~/services/products.services'
+import { PODUCTS_MESSAGE } from '~/constants/message'
 
 //show ra thông tin của sản phẩm theo id
 export const getProductController = async (req: Request, res: Response) => {
@@ -7,7 +8,7 @@ export const getProductController = async (req: Request, res: Response) => {
   try {
     if (!id) {
       return res.status(400).json({
-        message: 'Id is required'
+        message: PODUCTS_MESSAGE.ID_REQUIRED
       })
     }
 
@@ -15,11 +16,11 @@ export const getProductController = async (req: Request, res: Response) => {
 
     if (!product) {
       return res.status(404).json({
-        message: 'Product not found'
+        message: PODUCTS_MESSAGE.PRODUCT_NOT_FOUND
       })
     }
     return res.status(200).json({
-      message: 'Product found',
+      message: PODUCTS_MESSAGE.GET_PRODUCT_SUCCESS,
       result: product
     })
   } catch (error) {
@@ -37,13 +38,13 @@ export const deleteProductController = async (req: Request, res: Response) => {
   try {
     if (!id) {
       return res.status(401).json({
-        message: 'Id is required'
+        message: PODUCTS_MESSAGE.ID_REQUIRED
       })
     }
 
     await productSevrice.deleteProductById(id) //gọi hàm xóa sản phẩm
     return res.status(200).json({
-      message: 'Product deleted successfully'
+      message: PODUCTS_MESSAGE.PRODUCT_DELETED_SUCCESS
     })
   } catch (error) {
     console.error('Error occurred:', error)
