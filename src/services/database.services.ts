@@ -41,5 +41,5 @@ class DatabaseService {
   }
 }
 
-const databaseServices = new DatabaseService()
+const databaseServices = new DatabaseService() //tạo ra một đối tượng mới từ class DatabaseService
 export default databaseServices

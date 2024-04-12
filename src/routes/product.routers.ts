@@ -1,14 +1,8 @@
 import { Router } from 'express'
-import databaseServices from '~/services/database.services'
-import { productController } from '~/controllers/products.controller'
+import { productController, deleteProductController } from '~/controllers/products.controller'
 
 const productRouter = Router()
-
-productRouter.get('/', async (req, res) => {
-  const product = await databaseServices.products.findOne()
-  console.log(product)
-  res.send(product?.cover_image)
-})
-
+//show ra thông tin của sản phẩm theo id
 productRouter.get('/:id', productController)
+productRouter.delete('/:id', deleteProductController)
 export default productRouter
