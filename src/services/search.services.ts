@@ -6,6 +6,7 @@ class SearchServices {
     const { type, limit, page } = query
     const result = await databaseServices.products
       .find({ $text: { $search: type } }) //tìm kiếm theo text
+      .skip((page - 1) * limit) //bỏ qua các sản phẩm trước trang hiện tại
       .limit(limit) //giới hạn số lượng trả về
       .toArray() //chuyển dữ liệu từ cursor sang mảng
     return result

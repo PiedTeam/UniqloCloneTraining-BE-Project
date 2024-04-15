@@ -12,7 +12,7 @@ export const getProductController = async (req: Request, res: Response) => {
       })
     }
 
-    const product = await productSevrice.getProductById(id) //gọi hàm lấy thông tin sản phẩm theo id
+    const product = await productSevrice.getProductById(id)
 
     if (!product) {
       return res.status(404).json({
