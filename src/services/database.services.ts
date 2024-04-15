@@ -39,6 +39,13 @@ class DatabaseService {
   get categories(): Collection<Category> {
     return this.db.collection(process.env.DB_CATEGORIES_COLLECTION as string)
   }
+
+  async indexProducts() {
+    const exits = await this.products.indexExists(['type_text'])
+    if (!exits) {
+      await this.products.createIndex({ type: 'text' }, { default_language: 'none' })
+    }
+  }
 }
 
 const databaseServices = new DatabaseService() //tạo ra một đối tượng mới từ class DatabaseService
