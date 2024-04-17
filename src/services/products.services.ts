@@ -24,20 +24,15 @@ class ProductSevrice {
       if (existingProduct) {
         throw new Error('Product Exists')
       }
-      if (
-        !productData.name ||
-        !productData.type ||
-        !productData.price ||
-        !productData.description ||
-        !productData.material ||
-        !productData.warning ||
-        !productData.status ||
-        !productData.gender ||
-        !productData.cover_image ||
-        !productData.details
-      ) {
-        throw new Error('Missing required fields')
+      if (!productData.details) {
+        productData.details = []
       }
+      const now = new Date()
+      productData.details.forEach((detail) => {
+        detail.create_at = now
+        detail.create_by = new ObjectId()
+      })
+
       const insertResult = await databaseServices.products.insertOne(new Product(productData as ProductType))
       if (insertResult.acknowledged && insertResult.insertedId) {
         const insertedProductId = insertResult.insertedId

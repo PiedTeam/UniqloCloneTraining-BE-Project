@@ -26,7 +26,6 @@ export const productController = async (req: Request, res: Response) => {
     })
   }
 }
-
 export const upsertProductController = async (req: Request, res: Response) => {
   const { id } = req.params
   const productData = req.body
