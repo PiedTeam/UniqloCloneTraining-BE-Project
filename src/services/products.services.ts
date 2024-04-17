@@ -24,7 +24,6 @@ class ProductSevrice {
       if (existingProduct) {
         throw new Error('Product Exists')
       }
-      // Kiểm tra các trường bắt buộc
       if (
         !productData.name ||
         !productData.type ||

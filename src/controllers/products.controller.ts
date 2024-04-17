@@ -32,29 +32,29 @@ export const upsertProductController = async (req: Request, res: Response) => {
   const productData = req.body
 
   try {
-    // Validate input
-    if (!productData.name || productData.name.length > 200) {
-      return res.status(422).json({ message: 'Invalid product_name' })
-    }
-    if (productData.quantity < 0) {
-      return res.status(422).json({ message: 'Invalid product_quantity' })
-    }
-    if (productData.release_day && productData.release_day < new Date()) {
-      return res.status(422).json({ message: 'Invalid release_day' })
-    }
-    // Kiểm tra các trường bắt buộc khác
-    if (
-      !productData.type ||
-      !productData.price ||
-      !productData.description ||
-      !productData.material ||
-      !productData.warning ||
-      !productData.status ||
-      !productData.gender ||
-      !productData.cover_image ||
-      !productData.details
-    ) {
-      return res.status(422).json({ message: 'Missing required fields' })
+    if (!id) {
+      if (!productData.name || productData.name.length > 200) {
+        return res.status(422).json({ message: 'Invalid product_name' })
+      }
+      if (productData.quantity < 0) {
+        return res.status(422).json({ message: 'Invalid product_quantity' })
+      }
+      if (productData.release_day && productData.release_day < new Date()) {
+        return res.status(422).json({ message: 'Invalid release_day' })
+      }
+      if (
+        !productData.type ||
+        !productData.price ||
+        !productData.description ||
+        !productData.material ||
+        !productData.warning ||
+        !productData.status ||
+        !productData.gender ||
+        !productData.cover_image ||
+        !productData.details
+      ) {
+        return res.status(422).json({ message: 'Missing required fields' })
+      }
     }
 
     if (id) {
