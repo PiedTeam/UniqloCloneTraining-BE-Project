@@ -5,6 +5,7 @@ interface ProductType {
   _id?: ObjectId
   name: string
   type: string
+  category_id: ObjectId
   price: number
   quantity: number
   release_day: Date
@@ -31,6 +32,7 @@ export default class Product {
   _id?: ObjectId
   name: string
   type: string
+  category_id: ObjectId
   price: number
   quantity: number
   release_day: Date
@@ -46,6 +48,7 @@ export default class Product {
   constructor(product: ProductType) {
     ;(this.name = product.name),
       (this.type = product.type),
+      (this.category_id = product.category_id),
       (this.price = product.price),
       (this.quantity = product.quantity),
       (this.release_day = product.release_day),
