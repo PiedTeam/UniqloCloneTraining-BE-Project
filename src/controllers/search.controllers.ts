@@ -27,5 +27,8 @@ export const searchController = async (req: Request, res: Response) => {
       data: resultAll
     })
   }
-  return res.status(200).json(result)
+  return res.status(200).json({
+    message: 'Search successfully',
+    data: result
+  })
 }
