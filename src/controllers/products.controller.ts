@@ -36,29 +36,38 @@ export const upsertProductController = async (req: Request, res: Response) => {
     if (!productData.name || productData.name.length > 200) {
       return res.status(422).json({ message: 'Invalid product_name' })
     }
-
     if (productData.quantity < 0) {
       return res.status(422).json({ message: 'Invalid product_quantity' })
     }
-
     if (productData.release_day && productData.release_day < new Date()) {
       return res.status(422).json({ message: 'Invalid release_day' })
+    }
+    // Kiểm tra các trường bắt buộc khác
+    if (
+      !productData.type ||
+      !productData.price ||
+      !productData.description ||
+      !productData.material ||
+      !productData.warning ||
+      !productData.status ||
+      !productData.gender ||
+      !productData.cover_image ||
+      !productData.details
+    ) {
+      return res.status(422).json({ message: 'Missing required fields' })
     }
 
     if (id) {
       // Update product
       const updatedProduct = await productSevrice.upsertProduct(id, productData)
-
       if (!updatedProduct) {
         return res.status(404).json({ message: 'Product not found' })
       }
-
       return res.status(200).json({ message: 'Update Product Successfully', data: updatedProduct })
     } else {
       // Create product
       const newProduct = new Product(productData)
       const createdProduct = await productSevrice.upsertProduct(null, newProduct)
-
       return res.status(200).json({ message: 'Create Product Successfully', data: createdProduct })
     }
   } catch (error: any) {
