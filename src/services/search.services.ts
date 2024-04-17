@@ -11,6 +11,16 @@ class SearchServices {
       .toArray() //chuyển dữ liệu từ cursor sang mảng
     return result
   }
+
+  async searchAll(query: { limit: number; page: number }) {
+    const { limit, page } = query //lấy dữ liệu từ query
+    const result = await databaseServices.products
+      .find() //tìm kiếm tất cả
+      .skip((page - 1) * limit) //bỏ qua các sản phẩm trước trang hiện tại
+      .limit(limit) //giới hạn số lượng trả về
+      .toArray() //chuyển dữ liệu từ cursor sang mảng
+    return result
+  }
 }
 
 const searchServices = new SearchServices()
