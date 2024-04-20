@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb'
-import { ProductColor, ProductGender, ProductSize, ProductStatus } from '~/enum/Product.enum'
+import { ProductColor, ProductSize, ProductStatus } from '~/enum/Product.enum'
 
 interface ProductType {
   _id?: ObjectId
@@ -14,7 +14,6 @@ interface ProductType {
   material: string
   warning: string
   status: ProductStatus
-  gender: ProductGender
   cover_image: string
   product_images: string[]
   details: ProductDetail[]
@@ -41,7 +40,6 @@ export default class Product {
   material: string
   warning: string
   status: ProductStatus
-  gender: ProductGender
   cover_image: string
   product_images: string[]
   details: ProductDetail[]
@@ -58,7 +56,6 @@ export default class Product {
       (this.material = product.material),
       (this.warning = product.warning),
       (this.status = product.status),
-      (this.gender = product.gender),
       (this.product_images = product.product_images),
       (this.details = product.details)
   }

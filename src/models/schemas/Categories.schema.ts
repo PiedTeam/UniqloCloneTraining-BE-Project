@@ -3,19 +3,19 @@ import { ProductGender } from '~/enum/Product.enum'
 
 interface CategoryType {
   _id?: ObjectId
-  name: string
-  categoryName: string
+  category_title: string
+  category_name: string
   gender: ProductGender
 }
 
 export default class Category {
   _id?: ObjectId
-  name: string
-  categoryName: string
+  category_title: string
+  category_name: string
   gender: ProductGender
   constructor(category: CategoryType) {
-    this.name = category.name
-    this.categoryName = category.categoryName
+    this.category_title = category.category_title
+    this.category_name = category.category_name
     this.gender = category.gender
   }
 }
