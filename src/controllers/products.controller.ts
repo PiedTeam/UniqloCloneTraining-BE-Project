@@ -5,7 +5,6 @@ import Product from '~/models/schemas/Products.schema'
 import { ProductStatus } from '~/enum/Product.enum'
 import Category from '~/models/schemas/Categories.schema'
 import databaseServices from '~/services/database.services'
-//show ra thông tin của sản phẩm theo id
 export const getProductController = async (req: Request, res: Response) => {
   const id = req.params.id // lấy id từ url
   try {

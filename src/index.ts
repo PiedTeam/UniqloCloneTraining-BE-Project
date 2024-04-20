@@ -5,7 +5,7 @@ import productRouter from './routes/product.routers'
 import searchRouter from './routes/sreach.routers'
 ////////////////////////
 const app = express()
-const port = 3000
+const port = 6969
 
 // Connect to MongoDB
 databaseServices.connect()

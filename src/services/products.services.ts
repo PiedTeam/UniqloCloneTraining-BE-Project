@@ -14,15 +14,12 @@ class ProductService {
 
   async upsertProduct(productId: string | null, productData: Partial<ProductType>, categoryData: CategoryType) {
     if (productId) {
-      // Cập nhật sản phẩm
       const objectId = new ObjectId(productId)
       const existingProduct = await databaseServices.products.findOne({ _id: objectId })
 
       if (!existingProduct) {
         return null
       }
-
-      // Tìm danh mục từ thông tin categoryData
       const category = await databaseServices.categories.findOne({ category_name: categoryData.category_name })
       if (!category) {
         throw new Error('Không tìm thấy danh mục')
@@ -39,8 +36,6 @@ class ProductService {
       if (existingProduct) {
         throw new Error('Sản phẩm đã tồn tại')
       }
-
-      // Tạo mới danh mục nếu chưa tồn tại
       let category = await databaseServices.categories.findOne({ category_name: categoryData.category_name })
       if (!category) {
         const newCategory = new Category(categoryData)
