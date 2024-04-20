@@ -1,10 +1,6 @@
 import { Router } from 'express'
 import databaseServices from '~/services/database.services'
-import {
-  getProductController,
-  upsertProductController,
-  deleteProductController
-} from '~/controllers/products.controller'
+import { getProductController, upsertProductController } from '~/controllers/products.controller'
 
 const productRouter = Router()
 
@@ -17,5 +13,4 @@ productRouter.get('/', async (req, res) => {
 productRouter.get('/:id', getProductController)
 productRouter.route('/').post(upsertProductController).put(upsertProductController)
 productRouter.put('/:id', upsertProductController)
-productRouter.delete('/:id', deleteProductController)
 export default productRouter
