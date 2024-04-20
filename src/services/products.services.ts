@@ -12,7 +12,19 @@ class ProductService {
     return product
   }
 
-  async upsertProduct(productId: string | null, productData: Partial<ProductType>, categoryData: CategoryType) {
+  async upsertProduct(productId: string | null, productData: any, categoryData: any) {
+    if (!productId) {
+      // Ép kiểu cho price
+      productData.price = parseFloat(productData.price)
+
+      // Ép kiểu cho quantity bên trong productDetail
+      productData.details.forEach((detail: any) => {
+        detail.quantities.forEach((quantity: any) => {
+          quantity.quantity = parseInt(quantity.quantity)
+        })
+      })
+    }
+
     if (productId) {
       const objectId = new ObjectId(productId)
       const existingProduct = await databaseServices.products.findOne({ _id: objectId })
@@ -59,7 +71,7 @@ class ProductService {
         detail.create_by = new ObjectId()
       })
 
-      const insertResult = await databaseServices.products.insertOne(new Product(productData as ProductType))
+      const insertResult = await databaseServices.products.insertOne(new Product(productData))
 
       if (insertResult.acknowledged && insertResult.insertedId) {
         const insertedProductId = insertResult.insertedId

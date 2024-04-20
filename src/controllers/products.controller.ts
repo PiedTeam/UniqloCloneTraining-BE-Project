@@ -5,6 +5,7 @@ import Product from '~/models/schemas/Products.schema'
 import { ProductStatus } from '~/enum/Product.enum'
 import Category from '~/models/schemas/Categories.schema'
 import databaseServices from '~/services/database.services'
+import productService from '~/services/products.services'
 export const getProductController = async (req: Request, res: Response) => {
   const id = req.params.id // lấy id từ url
   try {
@@ -58,7 +59,7 @@ export const upsertProductController = async (req: Request, res: Response) => {
 
     let result
     if (id) {
-      result = await productSevrice.upsertProduct(id, productData, categoryData)
+      result = await productService.upsertProduct(id, productData, categoryData)
     } else {
       const newProduct = { ...productData, status: 'Active' }
       result = await productSevrice.upsertProduct(null, newProduct, categoryData)
